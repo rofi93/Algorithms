@@ -95,7 +95,7 @@ int compid[mx+5];
 void reset(int n)
 {
     sortedlist.clear();
-    for(int i=1;i<=n;i++)
+    for(int i=1; i<=n; i++)
     {
         edges[i].clear();
         revedges[i].clear();
@@ -108,7 +108,7 @@ void dfs1(int n)
 {
     int i;
     visited[n]=true;
-    for(i=0;i<edges[n].size();i++)
+    for(i=0; i<edges[n].size(); i++)
     {
         if(!visited[edges[n][i]])
             dfs1(edges[n][i]);
@@ -121,7 +121,7 @@ void dfs2(int n, int comp)
     int i;
     visited[n]=false;
     compid[n]=comp;
-    for(i=0;i<revedges[n].size();i++)
+    for(i=0; i<revedges[n].size(); i++)
     {
         if(visited[revedges[n][i]])
             dfs2(revedges[n][i],comp);
@@ -131,13 +131,13 @@ void dfs2(int n, int comp)
 void SCC(int node)
 {
     int i,comp;
-    for(i=1;i<=node;i++)
+    for(i=1; i<=node; i++)
     {
         if(!visited[i])
             dfs1(i);
     }
     comp=1;
-    for(i=sortedlist.size()-1;i>=0;i--)
+    for(i=sortedlist.size()-1; i>=0; i--)
     {
         if(visited[sortedlist[i]])
             dfs2(sortedlist[i],comp++);
@@ -149,14 +149,14 @@ int main()
     int edge,node,i,u,v;
     scanf("%d %d",&node,&edge);
     reset(node);
-    for(i=1;i<=edge;i++)
+    for(i=1; i<=edge; i++)
     {
         scanf("%d %d",&u,&v);
         edges[u].pb(v);
         revedges[v].pb(u);
     }
     SCC(node);
-    for(i=1;i<=node;i++)
+    for(i=1; i<=node; i++)
     {
         pr1(compid[i]);
     }
