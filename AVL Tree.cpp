@@ -244,6 +244,7 @@ node* search_node(node *current_node, int item)
         else
             break;
     }
+
     return current_node;
 }
 
@@ -324,19 +325,6 @@ void delete_tree(node *current_node)
 
 int main()
 {
-    /*node *root = NULL;
-
-    root = insert_node(root, 10);
-    root = insert_node(root, 20);
-    root = insert_node(root, 30);
-    root = insert_node(root, 40);
-    root = insert_node(root, 50);
-    root = insert_node(root, 25);
-
-    preorder_traverse(root);
-
-    delete_tree(root);*/
-
     node *root = NULL;
 
     root = insert_node(root, 9);
@@ -357,5 +345,6 @@ int main()
     preorder_traverse(root);
 
     delete_tree(root);
+
     return 0;
 }
