@@ -198,7 +198,6 @@ node* find_min(node *current_node)
 {
     while(current_node->left != NULL)
         current_node = current_node->left;
-
     return current_node;
 }
 
@@ -244,7 +243,6 @@ node* search_node(node *current_node, int item)
         else
             break;
     }
-
     return current_node;
 }
 
@@ -275,7 +273,10 @@ node* delete_node(node *current_node, int key_)
             }
             else
             {
-                *current_node = *temp;
+                current_node->key = temp->key;
+                current_node->left = temp->left;
+                current_node->right = temp->right;
+                current_node->height = temp->height;
             }
 
             delete temp;
@@ -337,14 +338,13 @@ int main()
     root = insert_node(root, 1);
     root = insert_node(root, 2);
 
+    printf("Pre-order traverse: ");
     preorder_traverse(root);
-    printf("\n");
 
     root = delete_node(root, 10);
 
+    printf("\nPre-order traverse: ");
     preorder_traverse(root);
-
     delete_tree(root);
-
     return 0;
 }
